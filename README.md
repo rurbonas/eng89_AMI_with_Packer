@@ -1,5 +1,9 @@
 # AMI with Packer
+
+Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration.
+
 ![](Picture3.png)
+
 ## Installing Packer on Linux (Controller)
 - `curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -`
 - `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
@@ -40,5 +44,16 @@ Copy AMI:
 }
 
 ```
+
+Authenticate to AWS. Create environmental variables for access keys and secret keys.
+Ansible Vault can't be used with packer
+```
+export AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+export AWS_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
+```
+- `packer init` to initialize our Packer configuration
+- `packer fmt` to format our template. Packer will print out the names of the files it modified.
+- `packer validate` to make sure our configuration is valid and internally consistent.
+- `packer build [filename]` 
 
 Work in Progress
